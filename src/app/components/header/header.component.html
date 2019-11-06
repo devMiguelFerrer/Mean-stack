@@ -1,0 +1,20 @@
+<mat-toolbar
+  color="primary"
+  class="mat-elevation-z8"
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+>
+  <div (click)="resetDB()" matTooltip="Click para resetear la base de datos">
+    MyCRUD
+    <mat-icon
+      class="example-icon"
+      aria-hidden="false"
+      aria-label="Example heart icon"
+      >favorite</mat-icon
+    >
+  </div>
+  <div fxLayoutGap="15px">
+    <a routerLink="create">Crear usuario</a
+    ><a routerLink="list">Lista usuarios</a>
+  </div>
+</mat-toolbar>

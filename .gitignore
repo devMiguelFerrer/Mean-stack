@@ -1,9 +1,16 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
+/backend/config/config.env
+/backend/config/seeder.js
+# /backend/config/users.json
+/backend/angular
+/_data
 /dist
 /tmp
 /out-tsc
+# /src
+/e2e
 # Only exists if Bazel was run
 /bazel-out
 

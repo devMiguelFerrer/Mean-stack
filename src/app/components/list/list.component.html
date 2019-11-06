@@ -1,0 +1,117 @@
+<section fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+  <mat-chip-list aria-label="Fish selection" *ngIf="listUsers.length === 0">
+    <mat-chip color="accent" selected
+      >No hay ningun usuario en la base de datos.</mat-chip
+    >
+  </mat-chip-list>
+  <div *ngFor="let user of listUsers; index as i">
+    <mat-card [className]="!user.show ? 'mat-card' : 'mat-card h400'">
+      <ng-container *ngIf="!user.show">
+        <mat-card-header fxLayout="row" fxLayoutGap="20px">
+          <div class="image">
+            <img src="assets/incognito.png" alt="image" />
+          </div>
+          <div>
+            <mat-card-title>{{ user.name }}</mat-card-title>
+            <mat-card-subtitle>Edad: {{ user.age }}</mat-card-subtitle>
+            <mat-card-subtitle>{{ user.email }}</mat-card-subtitle>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ user.desc }}</p>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="space-around center">
+          <button mat-raised-button color="accent" (click)="onChangeView(user)">
+            Editar
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            (click)="onDeleteUser(user._id)"
+          >
+            Borrar
+          </button>
+        </mat-card-actions>
+      </ng-container>
+
+      <ng-container *ngIf="user.show">
+        <form [formGroup]="userControl" (ngSubmit)="onEditUser()">
+          <mat-card-header fxLayout="row" fxLayoutGap="20px">
+            <div class="image">
+              <img [src]="'assets/incognito.png'" alt="image" />
+            </div>
+            <div>
+              <mat-card-title>
+                <mat-form-field>
+                  <input
+                    formControlName="name"
+                    type="text"
+                    matInput
+                    placeholder="Nombre"
+                    [value]="user.name"
+                  />
+                  <mat-error>Escriba al menos 3 caracteres</mat-error>
+                </mat-form-field>
+              </mat-card-title>
+              <mat-card-subtitle>
+                <mat-form-field>
+                  <input
+                    formControlName="age"
+                    type="number"
+                    matInput
+                    placeholder="Edad"
+                    [value]="user.age"
+                  />
+                  <mat-error>Mínimo 18 años y maximo 99 años</mat-error>
+                </mat-form-field></mat-card-subtitle
+              >
+              <mat-card-subtitle>
+                <mat-form-field>
+                  <input
+                    formControlName="email"
+                    type="email"
+                    matInput
+                    placeholder="Email"
+                    [value]="user.email"
+                  />
+                  <mat-error>Escriba un email valido</mat-error>
+                </mat-form-field>
+              </mat-card-subtitle>
+            </div>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-form-field class="w100">
+              <textarea
+                formControlName="desc"
+                type="text"
+                rows="3"
+                matInput
+                placeholder="Descripción"
+                >{{ user.desc }}</textarea
+              >
+              <mat-error>Escriba al menos 10 caracteres</mat-error>
+            </mat-form-field>
+          </mat-card-content>
+          <mat-card-actions fxLayout="row" fxLayoutAlign="space-around center">
+            <button
+              mat-raised-button
+              color="primary"
+              type="submit"
+              [disabled]="!userControl.valid"
+            >
+              Guardar
+            </button>
+            <button
+              type="button"
+              mat-raised-button
+              color="accent"
+              (click)="user.show = false"
+            >
+              Cancelar
+            </button>
+          </mat-card-actions>
+        </form>
+      </ng-container>
+    </mat-card>
+  </div>
+</section>

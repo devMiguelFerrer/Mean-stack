@@ -1,0 +1,42 @@
+mat-card {
+  width: 300px;
+  transition: 2s;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  height: 190px;
+}
+
+mat-card-header,
+mat-card-content {
+  overflow: hidden;
+}
+
+img {
+  width: 120px;
+}
+
+:host /deep/ .mat-card-header-text {
+  margin: 0 !important;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+textarea {
+  height: 60px;
+}
+
+:host /deep/ mat-form-field {
+  width: 90% !important;
+}
+
+:host /deep/ .w100 {
+  width: 100% !important;
+}
+
+.h400 {
+  height: 400px;
+}

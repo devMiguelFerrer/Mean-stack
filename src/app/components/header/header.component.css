@@ -1,0 +1,9 @@
+mat-toolbar {
+  margin-bottom: 20px;
+}
+
+a {
+  color: white;
+  text-decoration: none; /* no underline */
+  cursor: pointer;
+}
